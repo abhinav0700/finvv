@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -71,11 +70,17 @@ const AuthForm = () => {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: window.location.origin,
+          redirectTo: `${window.location.origin}/dashboard`,
         },
       });
       
       if (error) throw error;
+      
+      // Show success toast
+      toast({
+        title: "Redirecting...",
+        description: "Please wait while we redirect you to the dashboard",
+      });
     } catch (error: any) {
       toast({
         title: "Error",
@@ -90,11 +95,17 @@ const AuthForm = () => {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'apple',
         options: {
-          redirectTo: window.location.origin,
+          redirectTo: `${window.location.origin}/dashboard`,
         },
       });
       
       if (error) throw error;
+      
+      // Show success toast
+      toast({
+        title: "Redirecting...",
+        description: "Please wait while we redirect you to the dashboard",
+      });
     } catch (error: any) {
       toast({
         title: "Error",
