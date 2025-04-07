@@ -162,7 +162,7 @@ const AuthForm = () => {
               Password
             </label>
             {isLogin && (
-              <a href="#" className="text-sm text-primary hover:underline">
+              <a href="#" className="gold-link text-sm">
                 Forgot password?
               </a>
             )}
@@ -180,7 +180,7 @@ const AuthForm = () => {
 
         <Button
           type="submit"
-          className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg transition-colors"
+          className="w-full premium-button"
           disabled={loading}
         >
           {loading ? "Processing..." : isLogin ? "Sign In" : "Create Account"}
