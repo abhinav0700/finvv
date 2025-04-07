@@ -71,10 +71,11 @@
   }
 
   .premium-button {
-    @apply bg-accent text-accent-foreground hover:bg-[hsl(51,100%,45%)] px-4 py-2 rounded-md
-      transition-all duration-200 hover:shadow-[0_0_10px_rgba(255,215,0,0.3)]
-      focus:ring-2 focus:ring-accent focus:ring-offset-2;
+    @apply bg-[hsl(44,70%,50%)] text-white font-semibold px-4 py-3 rounded-full 
+      transition-all duration-200 hover:bg-[hsl(44,70%,45%)] 
+      focus:ring-2 focus:ring-[hsl(44,70%,45%)] focus:ring-offset-2;
   }
+  
   
 
   .gold-link {
