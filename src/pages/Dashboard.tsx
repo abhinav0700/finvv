@@ -20,12 +20,12 @@ const Dashboard = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-primary/5 p-6 rounded-lg border border-primary/20">
+          <div className="bg-muted p-6 rounded-lg border border-gray-200 shadow-sm">
             <h3 className="font-medium text-lg mb-2">Quick Stats</h3>
             <p className="text-sm text-gray-600">Your financial information will appear here once you start tracking your expenses.</p>
           </div>
           
-          <div className="bg-primary/5 p-6 rounded-lg border border-primary/20">
+          <div className="bg-muted p-6 rounded-lg border border-gray-200 shadow-sm">
             <h3 className="font-medium text-lg mb-2">Recent Transactions</h3>
             <p className="text-sm text-gray-600">Your recent transactions will appear here once you start adding them.</p>
           </div>

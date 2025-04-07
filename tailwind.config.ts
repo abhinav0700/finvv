@@ -29,16 +29,16 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#D4AF37', // gold
-					foreground: '#000000' // black
+					DEFAULT: '#222222', // changed from gold to dark gray
+					foreground: '#FFFFFF' // changed from black to white
 				},
 				secondary: {
-					DEFAULT: '#BF953F', // lighter gold
-					foreground: '#000000' // black
+					DEFAULT: '#555555', // changed from lighter gold to medium gray
+					foreground: '#FFFFFF' // changed from black to white
 				},
 				muted: {
-					DEFAULT: '#1A1A1A', // dark gray
-					foreground: '#D4AF37' // gold
+					DEFAULT: '#F1F1F1', // changed from dark gray to light gray
+					foreground: '#333333' // changed from gold to dark gray
 				},
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
@@ -49,8 +49,8 @@ export default {
 					foreground: 'hsl(var(--popover-foreground))'
 				},
 				card: {
-					DEFAULT: '#111111', // near black
-					foreground: '#D4AF37' // gold
+					DEFAULT: '#FFFFFF', // changed from near black to white
+					foreground: '#222222' // changed from gold to dark gray
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
