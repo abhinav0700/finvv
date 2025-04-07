@@ -3,17 +3,105 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AppleIcon, GoogleIcon } from "./AuthIcons";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log({ email, password, name, isLogin });
+    setLoading(true);
+    
+    try {
+      if (isLogin) {
+        // Handle login
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (error) throw error;
+        
+        toast({
+          title: "Login successful!",
+          description: "Welcome back!",
+        });
+        
+        navigate("/dashboard");
+      } else {
+        // Handle signup
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              full_name: name,
+            },
+          },
+        });
+
+        if (error) throw error;
+        
+        toast({
+          title: "Sign up successful!",
+          description: "Please check your email for verification.",
+        });
+      }
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "An error occurred",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.origin,
+        },
+      });
+      
+      if (error) throw error;
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "An error occurred with Google Sign In",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleAppleSignIn = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'apple',
+        options: {
+          redirectTo: window.location.origin,
+        },
+      });
+      
+      if (error) throw error;
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message || "An error occurred with Apple Sign In",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -93,8 +181,9 @@ const AuthForm = () => {
         <Button
           type="submit"
           className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg transition-colors"
+          disabled={loading}
         >
-          {isLogin ? "Sign In" : "Create Account"}
+          {loading ? "Processing..." : isLogin ? "Sign In" : "Create Account"}
         </Button>
       </form>
 
@@ -109,11 +198,19 @@ const AuthForm = () => {
         </div>
 
         <div className="mt-6 grid grid-cols-2 gap-3">
-          <button className="social-login-btn">
+          <button 
+            className="social-login-btn" 
+            type="button" 
+            onClick={handleGoogleSignIn}
+          >
             <GoogleIcon />
             <span>Google</span>
           </button>
-          <button className="social-login-btn">
+          <button 
+            className="social-login-btn" 
+            type="button" 
+            onClick={handleAppleSignIn}
+          >
             <AppleIcon />
             <span>Apple</span>
           </button>
