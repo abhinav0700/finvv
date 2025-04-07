@@ -11,7 +11,7 @@ const AuthLayout = () => {
         <div className="max-w-md">
           <div className="mb-8 flex items-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4 text-text">
-            Fin<span className="text-primary">vv</span>
+            Fin<span className="text-gold">vv</span>
           </h1>
 
             <div className="h-1 w-20 bg-accent ml-4 rounded"></div>
