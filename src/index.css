@@ -66,6 +66,10 @@
     @apply w-full py-2 text-center font-medium transition-colors duration-200 text-muted-foreground;
   }
 
+  .left-panel-gradient {
+    @apply bg-gradient-to-br from-neutral-800 to-neutral-900 text-white;
+  }
+
   .auth-tab.active {
     @apply text-accent border-b-2 border-accent;
   }

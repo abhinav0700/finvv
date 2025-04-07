@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 
 const AuthLayout = () => {
   return (
-    <div className="min-h-screen w-full flex flex-col md:flex-row">
+    <div className="left-panel-gradient p-10 flex flex-col justify-center">
       {/* Brand/Image Side */}
       <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-primary to-secondary p-8 text-white items-center justify-center">
         <div className="max-w-md">
