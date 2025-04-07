@@ -10,14 +10,12 @@ const AuthLayout = () => {
       <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-primary to-secondary p-8 text-white items-center justify-center">
         <div className="max-w-md">
           <div className="mb-8 flex items-center">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">FriendlyFinance</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">Finvv</h1>
             <div className="h-1 w-20 bg-accent ml-4 rounded"></div>
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Take control of your financial future</h2>
-          <p className="text-lg opacity-90 mb-8">
-            Join thousands of users who are already saving money, tracking expenses, and building wealth with our intuitive tools.
-          </p>
+          
           
           {/* Feature list */}
           <div className="space-y-4">
