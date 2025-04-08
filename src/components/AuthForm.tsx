@@ -186,7 +186,7 @@ const AuthForm = () => {
             onClick={handleGoogleSignIn}
           >
             <GoogleIcon />
-            <span>Google1</span>
+            <span>Google</span>
           </button>
         </div>
       </div>
