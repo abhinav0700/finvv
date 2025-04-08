@@ -115,7 +115,7 @@ const AuthForm = () => {
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
         {!isLogin && (
-          <div className="space-y-2">
+          <div className="space-y-2 animate-fade-in" style={{ animationDelay: "0.1s" }}>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">
               Full Name
             </label>
@@ -131,7 +131,7 @@ const AuthForm = () => {
           </div>
         )}
 
-        <div className="space-y-2">
+        <div className="space-y-2 animate-fade-in" style={{ animationDelay: "0.2s" }}>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
             Email
           </label>
@@ -146,7 +146,7 @@ const AuthForm = () => {
           />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2 animate-fade-in" style={{ animationDelay: "0.3s" }}>
           <div className="flex justify-between">
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
               Password
@@ -181,14 +181,15 @@ const AuthForm = () => {
         <Button
           type="submit"
           variant="gold"
-          className="w-full premium-button"
+          className="w-full premium-button animate-scale-in"
+          style={{ animationDelay: "0.4s" }}
           disabled={loading}
         >
           {loading ? "Processing..." : isLogin ? "Sign In" : "Create Account"}
         </Button>
       </form>
 
-      <div className="mt-6">
+      <div className="mt-6 animate-fade-in" style={{ animationDelay: "0.5s" }}>
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-200"></div>
@@ -200,14 +201,13 @@ const AuthForm = () => {
 
         <div className="mt-6 grid grid-cols-1 gap-3">
           <button 
-            className="social-login-btn" 
+            className="social-login-btn hover-scale" 
             type="button" 
             onClick={handleGoogleSignIn}
           >
             <GoogleIcon />
             <span>Google</span>
           </button>
-          
         </div>
       </div>
     </div>

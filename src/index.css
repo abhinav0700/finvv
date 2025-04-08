@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -154,5 +155,41 @@
     @apply border border-border/40 bg-card rounded-lg shadow-sm 
       hover:shadow-md hover:shadow-accent/5 hover:border-accent/20 
       transition-all duration-300;
+  }
+
+  /* Animation classes */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-in-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 ease-in-out hover:scale-105;
+  }
+}
+
+/* Add keyframe animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
