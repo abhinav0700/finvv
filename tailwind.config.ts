@@ -61,6 +61,10 @@ export default {
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
 			},
+			width: {
+				'3/10': '30%',
+				'7/10': '70%',
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
