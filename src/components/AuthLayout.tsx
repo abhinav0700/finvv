@@ -1,4 +1,3 @@
-
 import React from "react";
 import AuthForm from "./AuthForm";
 import { Card } from "@/components/ui/card";
@@ -9,18 +8,14 @@ const AuthLayout = () => {
       {/* Brand/Image Side */}
       <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-primary to-secondary p-8 text-white items-center justify-center">
         <div className="max-w-md">
-          <div className="mb-8 flex items-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-text">
-            Fin<span className="text-gold">vv</span>
-          </h1>
-          <br />
-          <br />
-
-            <div className="h-1 w-20 bg-accent ml-4 rounded"></div>
+          <div className="mb-8">
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-text inline-block">
+              Fin<span className="gold-text">vv</span>
+            </h1>
+            <div className="gold-line mt-2"></div>
           </div>
           
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Take control of your financial future</h2>
-          
           
           {/* Feature list */}
           <div className="space-y-4">
@@ -56,7 +51,7 @@ const AuthLayout = () => {
       </div>
 
       {/* Form Side */}
-      <div className="flex-1 flex items-center justify-center p-6 bg-background">
+      <div className="flex-1 flex items-center justify-center p-6" style={{ backgroundColor: 'hsl(var(--beige))' }}> {/* Changed to mild beige color */}
         <Card className="w-full max-w-md border border-border/50 shadow-lg hover:shadow-xl hover:shadow-accent/5 transition-all duration-300">
           <div className="p-8">
             <div className="mb-6 md:hidden">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { GoogleIcon } from "./AuthIcons";
+import { GoogleIcon } from "./AuthIcons"; // Removed AppleIcon import
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
@@ -18,24 +18,24 @@ const AuthForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
+    
     try {
       if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
           email,
           password,
         });
 
         if (error) throw error;
-
+        
         toast({
           title: "Login successful!",
           description: "Welcome back!",
         });
-
+        
         navigate("/dashboard");
       } else {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -46,7 +46,7 @@ const AuthForm = () => {
         });
 
         if (error) throw error;
-
+        
         toast({
           title: "Sign up successful!",
           description: "Please check your email for verification.",
@@ -65,20 +65,19 @@ const AuthForm = () => {
 
   const handleGoogleSignIn = async () => {
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
         options: {
           redirectTo: `${window.location.origin}/dashboard`,
         },
       });
-
+      
       if (error) throw error;
-
+      
       toast({
         title: "Redirecting...",
         description: "Please wait while we redirect you to the dashboard",
       });
-      // No need to use navigate here — Supabase will handle redirect
     } catch (error: any) {
       toast({
         title: "Error",
@@ -88,8 +87,11 @@ const AuthForm = () => {
     }
   };
 
+  /* Removed: handleAppleSignIn function and its implementation */
+
   return (
     <div className="w-full max-w-md px-6 py-8 bg-white rounded-2xl shadow-lg">
+      {/* Login/Signup Tabs */}
       <div className="flex mb-8 border-b border-gray-200">
         <button
           onClick={() => setIsLogin(true)}
@@ -105,6 +107,7 @@ const AuthForm = () => {
         </button>
       </div>
 
+      {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
         {!isLogin && (
           <div className="space-y-2">
@@ -118,7 +121,7 @@ const AuthForm = () => {
               placeholder="John Doe"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              required
+              required={!isLogin}
             />
           </div>
         )}
@@ -162,6 +165,7 @@ const AuthForm = () => {
 
         <Button
           type="submit"
+          variant="gold"
           className="w-full premium-button"
           disabled={loading}
         >
@@ -180,14 +184,15 @@ const AuthForm = () => {
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-3">
-          <button
-            className="social-login-btn"
-            type="button"
+          <button 
+            className="social-login-btn" 
+            type="button" 
             onClick={handleGoogleSignIn}
           >
             <GoogleIcon />
             <span>Google</span>
           </button>
+          
         </div>
       </div>
     </div>
